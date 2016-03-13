@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.cs442.nbrahman.obt_chat.AddUser"
+    android:background="#1E4072">
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etUserName"
+        android:hint="User Name"
+        android:textColor="#74839A"
+        android:textSize="14dp"
+        android:background="@drawable/edittext_border"
+        android:layout_marginTop="50dp"
+        android:layout_margin="10dp"/>
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etPassword"
+        android:hint="Enter password here"
+        android:textColor="#74839A"
+        android:textSize="14dp"
+        android:background="@drawable/edittext_border"
+        android:layout_below="@+id/etUserName"
+        android:layout_marginTop="50dp"
+        android:layout_margin="10dp"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/etConfirmPassword"
+        android:hint="Please confirm password"
+        android:textColor="#74839A"
+        android:textSize="14dp"
+        android:background="@drawable/edittext_border"
+        android:layout_below="@+id/etPassword"
+        android:layout_marginTop="50dp"
+        android:layout_margin="10dp"
+        android:inputType="textPassword" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvStatus"
+        android:layout_below="@+id/etConfirmPassword"
+        android:layout_marginTop="30dp"
+        android:text="Status"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        android:layout_margin="10dp"/>
+
+    <ListView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lvStatus"
+        android:layout_below="@+id/tvStatus"
+        android:layout_toEndOf="@+id/tvStatus"
+        android:layout_toRightOf="@+id/tvStatus"
+        android:background="#FFFFFF"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp">
+
+    </ListView>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/butCreateUser"
+        android:text="Create User"
+        android:textSize="12dp"
+        android:layout_margin="10dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="#E91E63"
+        android:onClick="goToPairDevices"
+        android:textColor="#FFFFFF"/>
+</RelativeLayout>

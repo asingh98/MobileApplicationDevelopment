@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="#646464">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.8"
+        android:background="#0d0d0d"
+
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Adam"
+            android:textSize="25sp"
+            android:textColor="#ffffff"
+            android:textStyle="bold"
+            android:layout_marginLeft="10dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/male_user_icon"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.2"
+        android:orientation="vertical">
+
+    <ListView android:id="@+id/myList"
+        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:transcriptMode="alwaysScroll"
+        android:footerDividersEnabled="false" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0.7"
+        android:orientation="horizontal">
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="#6d9b00"
+        android:hint="Type your message here..."
+        android:textColorHint="#b4ffffff"/>
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginLeft="20dp"
+        app:backgroundTint="#0f007e"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        app:borderWidth="0dp"
+        android:background="@drawable/img"
+        android:foreground="@drawable/save_icon" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginLeft="10dp"
+        app:backgroundTint="#ffdd00"
+        android:src="@drawable/img"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+
+        app:borderWidth="0dp"
+        android:foreground="@drawable/img" />
+    <android.support.design.widget.FloatingActionButton
+        android:layout_width="100px"
+        android:layout_height="100px"
+        android:layout_marginLeft="10dp"
+        app:backgroundTint="#da0049"
+        android:src="@drawable/send2"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        app:borderWidth="0dp"
+        android:foreground="@drawable/send" />
+
+    </LinearLayout>
+
+</LinearLayout>
