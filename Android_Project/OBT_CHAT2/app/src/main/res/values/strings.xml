@@ -8,4 +8,18 @@
     <string name="title_activity_chat_options">ChatOptions</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="title_activity_saved_chats">SavedChats</string>
+
+
+    <string name="text_bluetooth_off">Bluetooth is Off</string>
+    <string name="text_bluetooth_on">Bluetooth is On</string>
+    <string name="text_enable">Enable</string>
+    <string name="text_disable">Disable</string>
+    <string name="text_view_paired">Paired Devices</string>
+    <string name="text_scan_devices">Scan Devices</string>
+    <string name="text_stop_scan">Scan Devices</string>
+    <string name="text_list_paired_devices">Paired Devices</string>
+    <string name="text_list_devices">List of Devices</string>
+    <string name="text_pair">Pair</string>
+    <string name="title_activity_blue_tooth_setting">BlueToothSetting</string>
+
 </resources>
