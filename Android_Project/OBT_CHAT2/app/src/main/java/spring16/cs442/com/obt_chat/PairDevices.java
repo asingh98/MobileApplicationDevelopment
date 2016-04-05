@@ -1,5 +1,6 @@
 package spring16.cs442.com.obt_chat;
 import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,26 @@ import android.widget.TextView;
  * Created by Divya on 3/11/2016.
  */
 public class PairDevices extends Activity {
+
+    /**
+     * Tag for Log
+     */
+    private static final String TAG = "DeviceListActivity";
+
+    /**
+     * Return Intent extra
+     */
+    public static String EXTRA_DEVICE_ADDRESS = "device_address";
+
+    /**
+     * Member fields
+     */
+    private BluetoothAdapter mBtAdapter;
+
+    /**
+     * Newly discovered devices
+     */
+    private ArrayAdapter<String> mNewDevicesArrayAdapter;
 
     ListView lv;
     String[] devices = {

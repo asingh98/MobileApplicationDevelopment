@@ -40,7 +40,7 @@ public class ChatList extends ListActivity {
                 R.id.Itemname, itemname));
     }
     public void goToPairDevices(View view){
-        Intent intent = new Intent(this, PairDevices.class);
+        Intent intent = new Intent(this, BlueToothSetting.class);
         startActivity(intent);
     }
 
