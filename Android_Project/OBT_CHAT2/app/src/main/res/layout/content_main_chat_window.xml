@@ -50,7 +50,8 @@
         android:layout_height="fill_parent"
         android:background="#6d9b00"
         android:hint="Type your message here..."
-        android:textColorHint="#b4ffffff"/>
+        android:textColorHint="#b4ffffff"
+        android:id="@+id/msgText" />
     <android.support.design.widget.FloatingActionButton
         android:layout_width="100px"
         android:layout_height="100px"
@@ -81,8 +82,15 @@
         android:layout_gravity="bottom"
         android:layout_marginBottom="10dp"
         app:borderWidth="0dp"
-        android:foreground="@drawable/send" />
+        android:foreground="@drawable/send"
+        android:id="@+id/send_button" />
 
     </LinearLayout>
+    <fragment
+            android:name="spring16.cs442.com.obt_chat.BluetoothChatFragment"
+            android:id="@+id/ChatFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
 
 </LinearLayout>

@@ -23,6 +23,7 @@ public class DeviceListActivity extends Activity {
 	private ListView mListView;
 	private DeviceListAdapter mAdapter;
 	private ArrayList<BluetoothDevice> mDeviceList;
+	public static String EXTRA_DEVICE_ADDRESS = "device_address";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
