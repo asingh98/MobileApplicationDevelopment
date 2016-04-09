@@ -49,7 +49,6 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 		_db.execSQL(OTBDBAdapter.USER_MASTER_TABLE_CREATE);
 		_db.execSQL(OTBDBAdapter.USER_LIST_TABLE_CREATE);
 		_db.execSQL(OTBDBAdapter.USER_CONVERSATION_TABLE_CREATE);
-		db = this.getWritableDatabase();
 
 	}
 
@@ -65,9 +64,8 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 	public long insertUser(String strUserName, String strPassword, String strUserDisplayName, String strUserEmailID) {
 		long lngRetValue;
-		SQLiteDatabase db = this.getWritableDatabase();
 		if (getUserDisplayNameCount(strUserDisplayName)<=0) {
-
+			SQLiteDatabase db = this.getWritableDatabase();
 			ContentValues newValues = new ContentValues();
 			newValues.put("User_Password", strPassword);
 			newValues.put("User_Name", strUserName);
@@ -81,7 +79,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 		{
 			lngRetValue  = -100;
 		}
-		//db.close();
+		db.close();
 		return lngRetValue;
 	}
 
@@ -93,7 +91,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 		lngRetValue = db.delete ("User_Master_Golden", where,
 				new String[]{strUserDisplayName});
-		//db.close();
+		db.close();
 		return lngRetValue;
 	}
 
@@ -103,7 +101,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 				new String[]{strUserDisplayName}, null, null, null);
 		if (cursor.getCount() < 1) {
 			cursor.close();
-			//db.close();
+			db.close();
 			return null;
 		}
 		cursor.moveToFirst ();
@@ -117,7 +115,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 		umCurrentUserMaster.strPhoto = cursor.getString (cursor.getColumnIndex ("User_Profile_Photo"));
 		umCurrentUserMaster.strProfileStatus = cursor.getString (cursor.getColumnIndex ("User_Profile_Status"));
 		cursor.close();
-		//db.close();
+		db.close();
 		return umCurrentUserMaster;
 	}
 
@@ -127,7 +125,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 				new String[]{strUserDisplayName}, null, null, null);
 		int intCnt = cursor.getCount();
 		cursor.close();
-		//db.close();
+		db.close();
 		return intCnt;
 	}
 
@@ -137,18 +135,18 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 				new String[]{strUserDisplayName}, null, null, null);
 		if (cursor.getCount() < 1) {
 			cursor.close();
-			//db.close();
+			db.close();
 			return -1;//User does not exist
 		}
 		cursor.moveToFirst ();
 		if (cursor.getString(cursor.getColumnIndex("User_Password")).equals (strPassword))
 		{
-			//db.close();
+			db.close();
 			return 0;
 		}
 		else
 		{
-			//db.close();
+			db.close();
 			return -2;
 		}
 	}
@@ -168,7 +166,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 		String where = "User_Display_Name = ?";
 		lngRetValue = db.update ("User_Master_Golden", updatedValues, where, new String[]{strUserDisplayName});
-		//db.close();
+		db.close();
 		return lngRetValue;
 	}
 

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 		import android.util.Log;
 
+import spring16.cs442.com.obt_chat.OTBDBAdapter;
+
 public class OBTDBHelper extends SQLiteOpenHelper {
 	public OBTDBHelper(Context context, String name, CursorFactory factory, int version) {
 		super(context, name, factory, version);

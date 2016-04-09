@@ -55,6 +55,9 @@
             android:name=".DeviceListActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
+        <activity android:name=".CreateUser">
+        </activity>
+
 
     </application>
 

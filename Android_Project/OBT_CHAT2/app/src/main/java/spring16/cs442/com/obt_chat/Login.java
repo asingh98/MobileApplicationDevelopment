@@ -1,8 +1,5 @@
 package spring16.cs442.com.obt_chat;
 
-import android.bluetooth.BluetoothAdapter;
-import android.bluetooth.BluetoothDevice;
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -14,13 +11,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.Set;
-
 public class Login extends AppCompatActivity {
 	final String dbName="otb";
-	Context self=this;
-	private BluetoothAdapter mBluetoothAdapter;
+
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate (savedInstanceState);
@@ -32,18 +25,18 @@ public class Login extends AppCompatActivity {
 		if (tvCreateUser!=null) {
 			tvCreateUser.setOnClickListener (new View.OnClickListener () {
 				public void onClick (View v) {
-					Intent intent = new Intent (getBaseContext (), AddUser.class);
+					Intent intent = new Intent (getBaseContext (), CreateUser.class);
 					startActivity (intent);
 				}
 			});
 		}
-		mBluetoothAdapter	= BluetoothAdapter.getDefaultAdapter();
+
 		TextView tvSkipLogin = (TextView)findViewById (R.id.tvSkipLogin);
 		if (tvSkipLogin!=null) {
 			tvSkipLogin.setOnClickListener(new View.OnClickListener(){
 				public void onClick(View v){
-					Intent intent = new Intent(getBaseContext (), BlueToothSetting.class);
-					startActivity(intent);
+					//Intent intent = new Intent(getBaseContext (), CreateUser.class);
+					//startActivity(intent);
 					//code for Bluetooth Discovery activity
 				}
 			});
@@ -73,8 +66,7 @@ public class Login extends AppCompatActivity {
 
 					OTBDBAdapter myDBAdapter = new OTBDBAdapter (getApplicationContext (), dbName, null, 1);
 					switch (myDBAdapter.validateUserPassword (etPassword.getText ().toString (), etUserName.getText ().toString ())) {
-					//switch(0){
-							case -1:
+						case -1:
 							Toast.makeText (getApplicationContext (), "User does not exist", Toast.LENGTH_LONG).show ();
 							Log.i (this.getClass ().getName (), "User does not exist");
 							break;
@@ -85,34 +77,13 @@ public class Login extends AppCompatActivity {
 						case 0:
 							myDBAdapter.updateUserLastLogin (etUserName.getText ().toString ());
 							//code to display the next activity using intent
-
-							Set<BluetoothDevice> pairedDevices = mBluetoothAdapter.getBondedDevices();
-
-							if (pairedDevices == null || pairedDevices.size() == 0) {
-								showToast("No Paired Devices Found");
-							} else {
-								ArrayList<BluetoothDevice> list = new ArrayList<BluetoothDevice>();
-
-								list.addAll(pairedDevices);
-
-								Intent intent = new Intent(self, ChatList.class);
-
-								intent.putParcelableArrayListExtra("device.list", list);
-
-								startActivity(intent);
-							}
-
-
-							//Intent intent = new Intent(self, ChatList.class);
-							//startActivity(intent);
 							Log.i (this.getClass ().getName (), "Login successful");
+							Intent intent = new Intent (getBaseContext (), ChatList.class);
+							startActivity(intent);
 							break;
 					}
 				}
 			});
 		}
-	}
-	private void showToast(String message) {
-		Toast.makeText(getApplicationContext(), message, Toast.LENGTH_SHORT).show();
 	}
 }

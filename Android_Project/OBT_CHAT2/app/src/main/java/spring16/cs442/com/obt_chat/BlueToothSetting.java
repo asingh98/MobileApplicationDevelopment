@@ -151,7 +151,8 @@ public class BlueToothSetting extends Activity {
 
     private void showEnabled() {
         mStatusTv.setText("Bluetooth is On");
-        mStatusTv.setTextColor(Color.GREEN);
+        mStatusTv.setTextColor(Color.DKGRAY);
+        mStatusTv.setTextSize(20);
 
         mActivateBtn.setText("Disable");
         mActivateBtn.setEnabled(true);
