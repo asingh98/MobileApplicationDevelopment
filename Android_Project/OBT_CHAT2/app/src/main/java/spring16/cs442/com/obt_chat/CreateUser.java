@@ -190,8 +190,10 @@ public class CreateUser extends AppCompatActivity {
 								Log.i (this.getClass ().getName (), "Duplicate User Display Name already exists");
 								break;
 							case 0:
-								Toast.makeText (getApplicationContext (), "User create succesfully", Toast.LENGTH_LONG).show ();
-								Log.i (this.getClass ().getName (), "User create succesfully");
+								Toast.makeText (getApplicationContext (), "User created succesfully", Toast.LENGTH_LONG).show ();
+								Log.i(this.getClass().getName(), "User create succesfully");
+								//Intent intent = new Intent (getBaseContext (), Login.class);
+								//startActivity(intent);
 								break;
 						}
 					}

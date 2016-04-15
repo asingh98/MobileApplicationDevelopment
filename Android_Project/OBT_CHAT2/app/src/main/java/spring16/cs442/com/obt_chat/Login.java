@@ -1,6 +1,7 @@
 package spring16.cs442.com.obt_chat;
 
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,10 +18,10 @@ public class Login extends AppCompatActivity {
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate (savedInstanceState);
-		Uri path = Uri.parse("android.resource://" + getPackageName () + "/" + R.drawable.default_user_photo);
-		Toast.makeText (this, path.toString(), Toast.LENGTH_LONG).show ();
-		setContentView (R.layout.activity_login);
-
+		setContentView(R.layout.activity_login);
+		OTBDBAdapter otbdbA = new OTBDBAdapter (this, dbName, null, 1);
+		SQLiteDatabase db = otbdbA.getWritableDatabase();
+		db.close();
 		TextView tvCreateUser = (TextView)findViewById (R.id.tvCreateUser);
 		if (tvCreateUser!=null) {
 			tvCreateUser.setOnClickListener (new View.OnClickListener () {
@@ -35,9 +36,8 @@ public class Login extends AppCompatActivity {
 		if (tvSkipLogin!=null) {
 			tvSkipLogin.setOnClickListener(new View.OnClickListener(){
 				public void onClick(View v){
-					//Intent intent = new Intent(getBaseContext (), CreateUser.class);
-					//startActivity(intent);
-					//code for Bluetooth Discovery activity
+					Intent intent = new Intent (getBaseContext (), MainActivity.class);
+					startActivity (intent);
 				}
 			});
 		}

@@ -11,10 +11,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -83,7 +79,7 @@ public class BlueToothSetting extends Activity {
 
                         list.addAll(pairedDevices);
 
-                        Intent intent = new Intent(BlueToothSetting.this, DeviceListActivity.class);
+                        Intent intent = new Intent(BlueToothSetting.this, DeviceListActivityPair.class);
 
                         intent.putParcelableArrayListExtra("device.list", list);
 
@@ -205,7 +201,7 @@ public class BlueToothSetting extends Activity {
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 mProgressDlg.dismiss();
 
-                Intent newIntent = new Intent(BlueToothSetting.this, DeviceListActivity.class);
+                Intent newIntent = new Intent(BlueToothSetting.this, DeviceListActivityPair.class);
 
                 newIntent.putParcelableArrayListExtra("device.list", mDeviceList);
 

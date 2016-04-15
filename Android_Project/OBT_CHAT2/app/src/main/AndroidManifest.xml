@@ -10,8 +10,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:supportsRtl="true">
 
         <activity
             android:name=".Login"
@@ -52,10 +51,14 @@
             android:label="@string/title_activity_blue_tooth_setting"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".DeviceListActivity"
+            android:name=".DeviceListActivityPair"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <activity android:name=".CreateUser">
+        </activity>
+
+        <activity android:name=".MainActivity"
+            >
         </activity>
 
 

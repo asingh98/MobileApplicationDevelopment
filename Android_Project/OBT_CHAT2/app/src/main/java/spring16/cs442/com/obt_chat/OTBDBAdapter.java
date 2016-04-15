@@ -64,6 +64,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 	public long insertUser(String strUserName, String strPassword, String strUserDisplayName, String strUserEmailID) {
 		long lngRetValue;
+
 		if (getUserDisplayNameCount(strUserDisplayName)<=0) {
 			SQLiteDatabase db = this.getWritableDatabase();
 			ContentValues newValues = new ContentValues();
@@ -74,12 +75,13 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 			newValues.put ("User_Profile_Status", "Hey there!! I'm using OBT CHAT+");
 			//newValues.put ("User_Profile_Photo", R.drawable.default_user_photo.);
 			lngRetValue = db.insert ("User_Master_Golden", null, newValues);
+			db.close();
 		}
 		else
 		{
 			lngRetValue  = -100;
 		}
-		db.close();
+
 		return lngRetValue;
 	}
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright 2014 The Android Open Source Project
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/lib/BluetoothChatFragment.class"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#b1b1b1">
+
+    <ListView
+        android:id="@+id/in"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:stackFromBottom="true"
+        android:transcriptMode="alwaysScroll" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+
+        <EditText
+            android:id="@+id/edit_text_out"
+            android:layout_width="wrap_content"
+            android:layout_height="200px"
+            android:layout_gravity="bottom"
+            android:hint="Enter your txt here"
+            android:textColorHint="#b4ffffff"
+            android:textSize="10sp"
+            android:layout_weight="1"
+            android:background="#098900" />
+    <!--
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="20dp"
+            android:backgroundTint="#0f007e"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            app:borderWidth="0dp"
+            android:background="@drawable/img"
+            android:foreground="@drawable/save_icon" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="#ffdd00"
+            android:src="@drawable/img"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+
+            app:borderWidth="0dp"
+            android:foreground="@drawable/img" />
+        <android.support.design.widget.FloatingActionButton
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="#da0049"
+            android:src="@drawable/send"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            app:borderWidth="0dp"
+            android:foreground="@drawable/send"
+            android:id="@+id/send_button" />-->
+
+        <Button
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/save"
+            android:foreground="#0f007e"/>
+        <Button
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/image"
+            android:foreground="#ffdd00"/>
+        <Button
+            android:layout_width="100px"
+            android:layout_height="100px"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/send1"
+            android:foreground="#da0049"
+            android:id="@+id/send_button" />
+    </LinearLayout>
+
+</LinearLayout>

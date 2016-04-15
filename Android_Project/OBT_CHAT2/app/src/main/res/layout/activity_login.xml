@@ -76,37 +76,37 @@
 					android:textSize="12dp"
 					android:layout_marginRight="30dp"/>
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Create User"
-					android:textAlignment="gravity"
-					android:id="@+id/tvCreateUser"
-					android:textSize="16dp"
-					android:layout_alignTop="@+id/button"
-					android:layout_alignLeft="@+id/editText2"
-					android:layout_alignStart="@+id/editText2"
-					android:layout_alignBottom="@+id/button"
-					android:layout_toLeftOf="@+id/button"
-					android:layout_toStartOf="@+id/button"
-					android:textColor="#31780b"
-					android:layout_marginRight="10dp"/>
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:orientation="horizontal"
+					android:gravity="right">
 
-				<TextView
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:text="Skip Login"
-					android:textAlignment="gravity"
-					android:id="@+id/tvSkipLogin"
-					android:textSize="16dp"
-					android:layout_alignTop="@+id/button"
-					android:layout_alignLeft="@+id/editText2"
-					android:layout_alignStart="@+id/editText2"
-					android:layout_alignBottom="@+id/button"
-					android:layout_toLeftOf="@+id/button"
-					android:layout_toStartOf="@+id/button"
-					android:textColor="#31780b"
-					android:layout_marginRight="10dp"/>
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Create User"
+						android:textAlignment="gravity"
+						android:id="@+id/tvCreateUser"
+						android:textSize="16dp"
+						android:layout_alignBottom="@+id/btnLogin"
+						android:layout_toRightOf="@+id/btnLogin"
+						android:textColor="#31780b"
+						android:layout_marginRight="10dp"/>
+
+					<TextView
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:text="Skip Login"
+						android:textAlignment="gravity"
+						android:id="@+id/tvSkipLogin"
+						android:textSize="16dp"
+						android:layout_alignBottom="@+id/btnLogin"
+						android:layout_toRightOf="@+id/btnLogin"
+						android:textColor="#31780b"
+						android:layout_marginRight="10dp"/>
+
+				</LinearLayout>
 
 			</LinearLayout>
 
