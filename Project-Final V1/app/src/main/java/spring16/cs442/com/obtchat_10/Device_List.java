@@ -51,6 +51,7 @@ public class Device_List extends AppCompatActivity {
         mBluetoothAdapter	= BluetoothAdapter.getDefaultAdapter();
 
         final ListView listview = (ListView) findViewById(R.id.list);
+
         mBluetoothAdapter.startDiscovery();
 
         pairedDevices = mBluetoothAdapter.getBondedDevices();
@@ -158,6 +159,7 @@ public class Device_List extends AppCompatActivity {
                 if (adapter.getCount() == 0) {
                     String noDevices = getResources().getText(R.string.none_found).toString();
                     adapter.add(noDevices);
+
                 }
             }
         }

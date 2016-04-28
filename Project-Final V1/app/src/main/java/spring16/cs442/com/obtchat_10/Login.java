@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 public class Login extends AppCompatActivity {
 	final String dbName="otb";
+	public String logInUser;
+	public boolean blnEnableHistory=false;
 
 	@Override
 	protected void onCreate (Bundle savedInstanceState) {
@@ -35,8 +37,8 @@ public class Login extends AppCompatActivity {
 		if (tvSkipLogin!=null) {
 			tvSkipLogin.setOnClickListener(new View.OnClickListener(){
 				public void onClick(View v){
-					//Intent intent = new Intent (getBaseContext (), MainActivity.class);
-					//startActivity (intent);
+					Intent intent = new Intent (getBaseContext (), BluetoothChatFragment.class);
+					startActivity (intent);
 				}
 			});
 		}
@@ -64,8 +66,9 @@ public class Login extends AppCompatActivity {
 					}
 
 					OTBDBAdapter myDBAdapter = new OTBDBAdapter (getApplicationContext (), dbName, null, 1);
-					//switch (myDBAdapter.validateUserPassword (etPassword.getText ().toString (), etUserName.getText ().toString ())) {
-					switch(0){
+					switch (myDBAdapter.validateUserPassword (etPassword.getText ().toString (), etUserName.getText ().toString ())) {
+					//switch(0)
+
 						case -1:
 							Toast.makeText (getApplicationContext (), "User does not exist", Toast.LENGTH_LONG).show ();
 							Log.i (this.getClass ().getName (), "User does not exist");
@@ -77,8 +80,10 @@ public class Login extends AppCompatActivity {
 						case 0:
 							myDBAdapter.updateUserLastLogin (etUserName.getText ().toString ());
 							//code to display the next activity using intent
+							blnEnableHistory = true;
+							logInUser=etUserName.getText ().toString ();
 							Log.i (this.getClass ().getName (), "Login successful");
-							Intent intent = new Intent (getBaseContext (), MainActivity.class);
+							Intent intent = new Intent (getBaseContext (), BluetoothChatFragment.class);
 							startActivity(intent);
 							break;
 					}

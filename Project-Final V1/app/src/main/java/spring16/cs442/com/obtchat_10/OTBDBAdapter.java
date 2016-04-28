@@ -3,7 +3,9 @@ package spring16.cs442.com.obtchat_10;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
@@ -21,7 +23,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 			+ "User_Photo text); ";
 	static final String USER_LIST_TABLE_CREATE = "create table User_List ( "
 			+ "Device_Id" + " text, "
-			+ "User_Display_Name" + " integer, "
+			+ "User_Display_Name text, "
 			+ "Chat_User_Display_Name text, "
 			+ "Chat_User_Status text, "
 			+ "Chat_User_Photo text, "
@@ -62,8 +64,9 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 	public long insertUser(String strUserName, String strPassword, String strUserDisplayName, String strUserEmailID) {
 		long lngRetValue;
-		SQLiteDatabase db = this.getWritableDatabase();
+
 		if (getUserDisplayNameCount(strUserDisplayName)<=0) {
+			SQLiteDatabase db = this.getWritableDatabase();
 			ContentValues newValues = new ContentValues();
 			newValues.put("User_Password", strPassword);
 			newValues.put("User_Name", strUserName);
@@ -72,12 +75,13 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 			newValues.put ("User_Profile_Status", "Hey there!! I'm using OBT CHAT+");
 			//newValues.put ("User_Profile_Photo", R.drawable.default_user_photo.);
 			lngRetValue = db.insert ("User_Master_Golden", null, newValues);
+			db.close();
 		}
 		else
 		{
 			lngRetValue  = -100;
 		}
-		db.close();
+
 		return lngRetValue;
 	}
 
@@ -95,7 +99,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 
 	public UserMaster getUserDetails(String strUserDisplayName) {
 		SQLiteDatabase db = this.getReadableDatabase ();
-		Cursor cursor = db.query ("User_Master_Golden", null, "User_Display_Name=?",
+		Cursor cursor = db.query("User_Master_Golden", null, "User_Display_Name=?",
 				new String[]{strUserDisplayName}, null, null, null);
 		if (cursor.getCount() < 1) {
 			cursor.close();
@@ -136,7 +140,7 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 			db.close();
 			return -1;//User does not exist
 		}
-		cursor.moveToFirst ();
+		cursor.moveToFirst();
 		if (cursor.getString(cursor.getColumnIndex("User_Password")).equals (strPassword))
 		{
 			db.close();
@@ -177,6 +181,55 @@ public class OTBDBAdapter extends SQLiteOpenHelper {
 		String where = "User_Display_Name = ?";
 		lngRetValue = db.update("User_Master_Golden", updatedValues, where, new String[] { strUserDisplayName });
 		db.close();
+		return lngRetValue;
+	}
+
+	public long insertUserListTable(String srtFromDeviceId, String strUserDisplayName, String strChatUserDisplayName) {
+		long lngRetValue;
+
+		if (getUserDisplayNameCount(srtFromDeviceId)<=0) {
+			SQLiteDatabase db = this.getWritableDatabase();
+			ContentValues newValues = new ContentValues();
+
+			newValues.put("User_Display_Name", strUserDisplayName);
+			newValues.put("Device_Id", srtFromDeviceId);
+			newValues.put ("Chat_User_Display_Name", strChatUserDisplayName);
+			newValues.put ("Chat_User_Status", "online");
+			newValues.put ("Chat_User_Photo","null");
+			newValues.put ("Chat_Last_Msg_Timestamp", "datetime()");
+			lngRetValue = db.insert ("User_List", null, newValues);
+			db.close();
+
+		}
+		else
+		{
+			lngRetValue  = -100;
+		}
+
+		return lngRetValue;
+	}
+
+	public long insertConversation(String strFromUserName, String strToUserName, String strMessage, String strSendReceive) {
+		long lngRetValue;
+
+		if (getUserDisplayNameCount(strMessage)<=0) {
+			SQLiteDatabase db = this.getWritableDatabase();
+			ContentValues newValues = new ContentValues();
+			newValues.put("User_Display_Name", strFromUserName);
+			newValues.put("Chat_User_Display_Name", strToUserName);
+			//newValues.put("MessageId", strUserDisplayName);
+			newValues.put ("Message", strMessage);
+			newValues.put ("Sent_Received", strSendReceive);
+			newValues.put ("Time_stamp", "datetime()");
+			lngRetValue = db.insert ("User_Conversation", null, newValues);
+			db.close();
+
+		}
+		else
+		{
+			lngRetValue  = -100;
+		}
+
 		return lngRetValue;
 	}
 }

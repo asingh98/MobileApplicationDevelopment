@@ -2,12 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="{relativePackage}.${activityClass}"
-    android:background="#028402">
+    android:background="#028402"
+    tools:context="{relativePackage}.${activityClass}">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
@@ -17,32 +19,33 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="150px"
-                android:text="Discover"
                 android:background="#ff005e"
-                android:textColor="#ffffff"
-                android:onClick="goToPairDevices"/>
+                android:onClick="goToPairDevices"
+                android:text="Discover"
+                android:textColor="#ffffff" />
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="BT CHAT +"
-                android:textSize="30sp"
                 android:layout_marginLeft="110dp"
-                android:textColor="#ffffff"/>
+                android:text="BT CHAT +"
+                android:textColor="#ffffff"
+                android:textSize="30sp" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.1">
+
             <ListView
+                android:id="@+id/list"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/list"
-                android:clickable="true"
-                android:background="#ffffff"/>
+                android:background="#ffffff"
+                android:clickable="true" />
         </LinearLayout>
     </LinearLayout>
-
 
 
 </RelativeLayout>

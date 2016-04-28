@@ -96,21 +96,20 @@ public class CreateUser extends AppCompatActivity {
 			});
 		}
 
-		Button btnCreateUser = (Button) getWindow ().findViewById (R.id.btnCreateUser);
-		if (btnCreateUser!=null) {
-			btnCreateUser.setOnClickListener (new View.OnClickListener () {
-				@Override
-				public void onClick (View v) {
-					final EditText etUserName = (EditText) getWindow ().findViewById (R.id.etUserName);
-					if (etUserName!=null)
-					{
-						if ((etUserName.getText ().toString ().equals ("")) || (etUserName.getText ().toString ().isEmpty ())) {
-							Toast.makeText (getApplicationContext (), "User Name cannot be blank", Toast.LENGTH_LONG).show ();
-							Log.i (this.getClass ().getName (), "User Name cannot be blank");
-							etUserName.requestFocus ();
-							return;
-						}
-					}
+        Button btnCreateUser = (Button) getWindow().findViewById(R.id.btnCreateUser);
+        if (btnCreateUser != null) {
+            btnCreateUser.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    final EditText etUserName = (EditText) getWindow().findViewById(R.id.etUserName);
+                    if (etUserName != null) {
+                        if ((etUserName.getText().toString().equals("")) || (etUserName.getText().toString().isEmpty())) {
+                            Toast.makeText(getApplicationContext(), "User Name cannot be blank", Toast.LENGTH_LONG).show();
+                            Log.i(this.getClass().getName(), "User Name cannot be blank");
+                            etUserName.requestFocus();
+                            return;
+                        }
+                    }
 
 					final EditText etPassword = (EditText) findViewById (R.id.etPassword);
 					if (etPassword!=null) {
@@ -172,17 +171,17 @@ public class CreateUser extends AppCompatActivity {
 						OTBDBAdapter myDBAdapter = new OTBDBAdapter (getApplicationContext (), dbName, null , 1);
 						long lngReturn = myDBAdapter.insertUser (etUserFullName.getText ().toString (), etPassword.getText ().toString (),
 								etUserName.getText ().toString (), etEmailID.getText ().toString ());
-						switch (((int) lngReturn))
-						{
-							case -100:
-								Toast.makeText (getApplicationContext (), "Duplicate User Display Name already exists", Toast.LENGTH_LONG).show ();
-								Log.i (this.getClass ().getName (), "Duplicate User Display Name already exists");
-								break;
-							case 0:
-								Toast.makeText (getApplicationContext (), "User create succesfully", Toast.LENGTH_LONG).show ();
-								Log.i (this.getClass ().getName (), "User create succesfully");
-								break;
+						Log.i("*******************","Value is "+(int) lngReturn);
+
+						if(((int) lngReturn)>0){
+							Toast.makeText (getApplicationContext (), "User create succesfully", Toast.LENGTH_LONG).show ();
+							Log.i (this.getClass ().getName (), "User create succesfully");
+							onBackPressed ();
+						}else{
+							Toast.makeText (getApplicationContext (), "Duplicate User Display Name already exists", Toast.LENGTH_LONG).show ();
+							Log.i (this.getClass ().getName (), "Duplicate User Display Name already exists");
 						}
+
 					}
 
 				}

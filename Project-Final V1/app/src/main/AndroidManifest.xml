@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -41,9 +42,15 @@
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".BluetoothChatFragment"
             android:label="BT Chat+"
-            android:theme="@style/Theme.Custom_theme1">
+            android:theme="@style/Theme.Custom_theme1"
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:configChanges="orientation|screenSize|keyboardHidden" >
+            <meta-data
+                android:name="android.support.UI_OPTIONS"
+                android:value="splitActionBarWhenNarrow" />
         </activity>
         <activity
             android:name=".BlueToothSetting"

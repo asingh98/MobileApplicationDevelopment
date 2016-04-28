@@ -47,4 +47,14 @@
     <string name="insecure_connect">Connect a device - Insecure</string>
     <string name="discoverable">Make discoverable</string>
     <string name="title_activity_device__list">Device_List</string>
+    <string-array name="themes">
+        <item>Theme1</item>
+        <item>Theme2</item>
+        <item>Theme3</item>
+    </string-array>
+    <string name="OK">OK</string>
+    <string name="def_theme">Theme1</string>
+    <string name="theme_summary">Appearance</string>
+    <string name="theme_dialog_title">Theme</string>
+    <string name="settings">Settings</string>
 </resources>
